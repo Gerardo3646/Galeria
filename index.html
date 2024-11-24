@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <title>Galería</title>
+</head>
+<body>
+    <div class="container">
+        <header><h1>Galería de Imágenes</h1></header>
+        <main class="gallery">
+          <figure><img src="img/img1.jpg" alt="Imagen 1"></figure>
+          <figure><img src="img/img2.jpg" alt="Imagen 2"></figure>
+          <figure><img src="img/img3.webp" alt="Imagen 3"></figure>
+          <figure><img src="img/img4.webp" alt="Imagen 4"></figure>
+          <figure><img src="img/img5.jpg" alt="Imagen 5"></figure>
+          <figure><img src="img/img6.jpg" alt="Imagen 6"></figure>
+          <figure><img src="img/img7.jpg" alt="Imagen 7"></figure>
+          <figure><img src="img/img8.jpg" alt="Imagen 8"></figure>
+        </main>
+        <footer>
+          <small>2024 &copy; Juan Gerardo Fraga Vega</small>
+        </footer>
+    </div>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js")
+            .then(() => console.log("Service Worker registrado."))
+            .catch(err => console.error("Error al registrar el Service Worker", err));
+        }
+    </script>
+</body>
+</html>
