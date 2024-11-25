@@ -10,7 +10,8 @@ const urlsToCache = [
     "./img/img4.webp",
     "./img/img5.jpg",
     "./img/img6.jpg",
-    "./img/img7.jpg"
+    "./img/img7.jpg",
+    "./img/img8.jpg"
 ];
 
 // Instalación del Service Worker
@@ -46,10 +47,3 @@ self.addEventListener("fetch", (event) => {
     );
 });
 
-// Manejo de notificaciones
-self.addEventListener("notificationclick", (event) => {
-    event.notification.close(); // Cerrar la notificación al hacer clic
-    event.waitUntil(
-        clients.openWindow("https://gerardo3646.github.io/Galeria/") // Cambiar por la URL de tu sitio
-    );
-});
