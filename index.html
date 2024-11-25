@@ -12,6 +12,7 @@
         <header>
             <h1>Galería de Imágenes</h1>
         </header>
+        <button class="boton">Habilitar Notificaciones</button>
         <main class="gallery">
           <figure><img src="img/img1.jpg" alt="Imagen 1"></figure>
           <figure><img src="img/img2.jpg" alt="Imagen 2"></figure>
@@ -22,11 +23,54 @@
           <figure><img src="img/img7.jpg" alt="Imagen 7"></figure>
           <figure><img src="img/img8.jpg" alt="Imagen 8"></figure>
         </main>
-        <button class="boton">Habilitar Notificaciones</button>
+        <button class="boton" id="notifications">Habilitar Notificaciones</button>
         <footer>
           <small>2024 &copy; Juan Gerardo Fraga Vega</small>
         </footer>
     </div>
+
+    <script>
+        // Botón para habilitar notificaciones
+const button = document.getElementById("notifications");
+
+button.addEventListener("click", () => {
+    Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+            console.log("Notificaciones habilitadas");
+            scheduleNotifications();
+        } else {
+            console.error("Permiso para notificaciones denegado");
+        }
+    });
+});
+
+// Función para programar notificaciones automáticas
+function scheduleNotifications() {
+    const datos = [
+        { title: "¡Explora nuestra galería!", body: "Nuevas imágenes disponibles." },
+        { title: "Galería App", body: "No olvides visitar nuestras imágenes." },
+    ];
+
+    function sendNotification() {
+        const randomIndex = Math.floor(Math.random() * datos.length);
+        const { title, body } = datos[randomIndex];
+
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.ready.then((registration) => {
+                registration.showNotification(title, {
+                    body,
+                    icon: "./img/icon-192x192.png", // Asegúrate de que este archivo exista
+                });
+            });
+        }
+
+        // Reprograma la notificación para 1 minuto después
+        setTimeout(sendNotification, 60000);
+    }
+
+    sendNotification();
+}
+    </script>
 
     <script>
         if ("serviceWorker" in navigator) {
