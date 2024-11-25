@@ -47,3 +47,11 @@ self.addEventListener("fetch", (event) => {
     );
 });
 
+// Manejo de clics en notificaciones
+self.addEventListener("notificationclick", (event) => {
+    event.notification.close();
+    event.waitUntil(
+        clients.openWindow("./") // Cambia la URL si necesitas redirigir
+    );
+});
+
