@@ -45,3 +45,11 @@ self.addEventListener("fetch", (event) => {
         })
     );
 });
+
+// Manejo de notificaciones
+self.addEventListener("notificationclick", (event) => {
+    event.notification.close(); // Cerrar la notificación al hacer clic
+    event.waitUntil(
+        clients.openWindow("https://gerardo3646.github.io/Galeria/") // Cambiar por la URL de tu sitio
+    );
+});
