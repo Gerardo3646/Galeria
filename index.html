@@ -58,7 +58,7 @@ function scheduleNotifications() {
             navigator.serviceWorker.ready.then((registration) => {
                 registration.showNotification(title, {
                     body,
-                    icon: "./img/icon-192x192.png", // Asegúrate de que este archivo exista
+                    icon: "Galeria/img/icon-192x192.png", // Asegúrate de que este archivo exista
                 });
             });
         }
