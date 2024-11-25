@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
+    <script src="script.js"></script>
     <title>Galería</title>
 </head>
 <body>
     <div class="container">
-        <header><h1>Galería de Imágenes</h1></header>
+        <header>
+            <h1>Galería de Imágenes</h1>
+        </header>
+        <button class="boton">Habilitar Notificaciones</button>
         <main class="gallery">
           <figure><img src="img/img1.jpg" alt="Imagen 1"></figure>
           <figure><img src="img/img2.jpg" alt="Imagen 2"></figure>
@@ -20,42 +24,10 @@
           <figure><img src="img/img7.jpg" alt="Imagen 7"></figure>
           <figure><img src="img/img8.jpg" alt="Imagen 8"></figure>
         </main>
+        <button class="boton" id="notifications">Habilitar Notificaciones</button>
         <footer>
-        <button class="boton">Habilitar Notificaciones</button>
           <small>2024 &copy; Juan Gerardo Fraga Vega</small>
         </footer>
     </div>
-
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyA6bqggUaKNreN1RpF7tEywwhuPxwbYqUc",
-          authDomain: "galeria-imagenes-7d215.firebaseapp.com",
-          projectId: "galeria-imagenes-7d215",
-          storageBucket: "galeria-imagenes-7d215.firebasestorage.app",
-          messagingSenderId: "390162775916",
-          appId: "1:390162775916:web:c420fcc6bf9da8a0f13d49",
-          measurementId: "G-F93DL101G1"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-      </script>
-
-    <script>
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("service-worker.js")
-            .then(() => console.log("Service Worker registrado."))
-            .catch(err => console.error("Error al registrar el Service Worker", err));
-        }
-    </script>
 </body>
 </html>
