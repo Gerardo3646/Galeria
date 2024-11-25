@@ -1,38 +1,35 @@
+// Selección del botón para notificaciones
 const button = document.getElementById("notifications");
 
+// Evento para solicitar permisos de notificaciones
 button.addEventListener("click", () => {
     Notification.requestPermission().then((result) => {
         if (result === "granted") {
-            randomNotification();
+            sendNotification();
+        } else {
+            console.log("Permiso denegado");
         }
     });
 });
 
-const datos = [
-    { name: "¡Explora nuestra galería!", author: "Galería App", slug: "icono" },
-    { name: "¡Mira nuestras nuevas imágenes!", author: "Galería App", slug: "icono" },
-];
-
-function randomNotification() {
-    const randomItem = Math.floor(Math.random() * datos.length);
-    const notiTitle = datos[randomItem].name;
-    const notiBody = `Creado por ${datos[randomItem].author}`;
-    const notiImg = `./img/${datos[randomItem].slug}.png`;
-
+// Función para enviar una notificación
+function sendNotification() {
     const options = {
-        body: notiBody,
-        icon: notiImg,
+        body: "Explora nuestra galería de imágenes ahora.",
+        icon: "./img/img1.jpg",
     };
 
+    // Comprobar si el Service Worker está listo
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker.ready.then((registration) => {
-            registration.showNotification(notiTitle, options);
+            registration.showNotification("Galería de Imágenes", options);
         });
+    } else {
+        console.error("Service Worker no está disponible.");
     }
-
-    setTimeout(randomNotification, 30000); // Notificación cada 30 segundos
 }
 
+// Registrar el Service Worker
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker
         .register("./sw.js")
